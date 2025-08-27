@@ -27,8 +27,7 @@ pub(crate) fn should_compact(commit_version: Version, compaction_interval: Versi
 ///
 /// [`CheckpointWriter`]: crate::checkpoint::CheckpointWriter
 #[derive(Debug)]
-#[allow(dead_code)]
-pub(crate) struct LogCompactionWriter {
+pub struct LogCompactionWriter {
     table_root: Url,
     start_version: Version,
     end_version: Version,
@@ -65,8 +64,7 @@ impl LogCompactionWriter {
     }
 
     /// Get the path where the compaction file will be written
-    #[allow(dead_code)]
-    pub(crate) fn compaction_path(&self) -> DeltaResult<Url> {
+    pub fn compaction_path(&self) -> DeltaResult<Url> {
         Ok(self.compaction_path.location.clone())
     }
 
@@ -76,8 +74,7 @@ impl LogCompactionWriter {
     /// but specifically for the version range specified in the constructor.
     /// It reuses the CheckpointLogReplayProcessor to ensure consistent reconciliation
     /// logic with checkpoint creation.
-    #[allow(dead_code)]
-    pub(crate) fn compaction_data(
+    pub fn compaction_data(
         &mut self,
         engine: &dyn Engine,
     ) -> DeltaResult<LogCompactionDataIterator> {
