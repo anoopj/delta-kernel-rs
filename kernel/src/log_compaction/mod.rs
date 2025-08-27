@@ -91,6 +91,9 @@ pub use writer::{LogCompactionDataIterator, LogCompactionWriter};
 
 #[cfg(test)]
 mod tests;
+
+#[cfg(test)]
+mod integration_tests;
 /// Schema for extracting relevant actions from log files for compaction
 ///
 /// This aligns with the checkpoint schema used for reading and writing compacted files.
