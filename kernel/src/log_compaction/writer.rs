@@ -170,7 +170,10 @@ impl LogCompactionWriter {
     }
 
     /// List commit files in the specified version range
-    fn list_commit_files(&self, engine: &dyn Engine) -> DeltaResult<Vec<ParsedLogPath<FileMeta>>> {
+    fn list_commit_files(
+        &self,
+        engine: &dyn Engine,
+    ) -> DeltaResult<Vec<ParsedLogPath<FileMeta>>> {
         let log_root = self.table_root.join("_delta_log/")?;
 
         // Get all files in the _delta_log directory
