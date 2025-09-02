@@ -269,7 +269,8 @@ impl Snapshot {
     /// # use delta_kernel::{Engine, Snapshot, DeltaResult};
     /// # async fn example() -> DeltaResult<()> {
     /// let engine: Arc<dyn Engine> = todo!();
-    /// let snapshot = Arc::new(Snapshot::try_from_uri("./path/to/table", &*engine, None)?);
+    /// let table_root = url::Url::parse("file:///path/to/table")?;
+    /// let snapshot = Arc::new(Snapshot::builder(table_root).build(&*engine)?);
     ///
     /// // Compact commits 10-20 into a single file
     /// let writer = snapshot.compact_log(10, 20)?;
@@ -1048,7 +1049,7 @@ mod tests {
         let url = url::Url::from_directory_path(path).unwrap();
 
         let engine = SyncEngine::new();
-        let snapshot = Snapshot::try_new(url, &engine, None).unwrap();
+        let snapshot = Snapshot::builder(url).build(&engine).unwrap();
 
         // Test creating a log compaction writer
         let writer = snapshot.compact_log(0, 1).unwrap();
