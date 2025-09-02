@@ -88,7 +88,7 @@ use crate::schema::{SchemaRef, StructField, StructType, ToSchema as _};
 
 mod writer;
 
-pub use writer::{LogCompactionDataIterator, LogCompactionWriter};
+pub use writer::{should_compact, LogCompactionDataIterator, LogCompactionWriter};
 
 #[cfg(test)]
 mod tests;
