@@ -1048,7 +1048,7 @@ mod tests {
         let url = url::Url::from_directory_path(path).unwrap();
 
         let engine = SyncEngine::new();
-        let snapshot = Snapshot::try_new(url, &engine, None).unwrap();
+        let snapshot = Snapshot::builder(url).build(&engine).unwrap();
 
         // Test creating a log compaction writer
         let writer = snapshot.compact_log(0, 1).unwrap();
