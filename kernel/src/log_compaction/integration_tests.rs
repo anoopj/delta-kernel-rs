@@ -177,7 +177,7 @@ fn test_log_compaction_content_verification() -> DeltaResult<()> {
         let batch = batch_result?;
         batch_count += 1;
 
-        let row_count = batch.len();
+        let row_count = batch.data.len();
         total_rows_processed += row_count;
 
         println!("Processing batch {} with {} rows", batch_count, row_count);

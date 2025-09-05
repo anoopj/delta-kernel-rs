@@ -228,7 +228,7 @@ impl LogCompactionWriter {
 /// This iterator provides the reconciled actions that should be written
 /// to the compaction file. It follows a similar pattern to CheckpointDataIterator.
 #[allow(dead_code)]
-pub(crate) struct LogCompactionDataIterator {
+pub struct LogCompactionDataIterator {
     /// The nested iterator that yields compaction batches with action counts
     pub(crate) compaction_batch_iterator:
         Box<dyn Iterator<Item = DeltaResult<CheckpointBatch>> + Send>,
